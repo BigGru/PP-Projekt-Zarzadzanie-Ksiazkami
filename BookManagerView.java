@@ -15,7 +15,7 @@ public class BookManagerView {
     private void initView() {
         panel.setLayout(new BorderLayout());
 
-        // Search Panel
+        // Wyszukiwanie
         JPanel searchPanel = new JPanel();
         JTextField searchField = new JTextField(20);
         JButton searchButton = new JButton("Szukaj");
@@ -23,12 +23,12 @@ public class BookManagerView {
         searchPanel.add(searchField);
         searchPanel.add(searchButton);
 
-        // Book List
+        // Lista Ksiazek
         DefaultListModel<Book> bookListModel = controller.getBooks();
         JList<Book> bookListView = new JList<>(bookListModel);
         JScrollPane scrollPane = new JScrollPane(bookListView);
 
-        // Sort Panel
+        // Sortowanie
         JPanel sortPanel = new JPanel();
         JComboBox<String> sortComboBox = new JComboBox<>(new String[]{"Tytuł", "Autor", "Rok Wydania", "Gatunek"});
         JButton sortButton = new JButton("Sortuj");
@@ -36,14 +36,14 @@ public class BookManagerView {
         sortPanel.add(sortComboBox);
         sortPanel.add(sortButton);
 
-        // Control Panel for Add/Remove
+        // Dodaj/Usun
         JPanel controlPanel = new JPanel();
         JButton addBookButton = new JButton("Dodaj książke");
         JButton removeBookButton = new JButton("Usuń książke");
         controlPanel.add(addBookButton);
         controlPanel.add(removeBookButton);
 
-        // Add Book Panel
+        // Dodaj ksiazke
         JPanel addBookPanel = new JPanel(new GridLayout(5, 2));
         addBookPanel.setVisible(false);
         JTextField titleField = new JTextField(10);
@@ -62,7 +62,7 @@ public class BookManagerView {
         addBookPanel.add(new JLabel());
         addBookPanel.add(confirmAddButton);
 
-        // Event Listeners
+        // Działania
         searchButton.addActionListener(e -> {
             String regex = searchField.getText();
             bookListView.setModel(controller.searchBooks(regex));
@@ -115,7 +115,7 @@ public class BookManagerView {
             }
         });
 
-        // Layout
+        // Pozycjonowanie
         panel.add(searchPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(sortPanel, BorderLayout.EAST);
